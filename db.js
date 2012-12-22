@@ -1,6 +1,7 @@
-var mysql = require('mysql');
-var Sequelize = require("sequelize")
-var sequelize;
+var mysql = require('mysql'),
+	Sequelize = require("sequelize"),
+	sequelize,
+	db = {};
 if (!process.env.database) {
 	var config = require('./config');
 	sequelize = new Sequelize(config.database, config.user, config.password, {
@@ -14,11 +15,9 @@ if (!process.env.database) {
 	})
 }
 
-
-var db = {};
 db.posts = sequelize.define('posts', {
 	title: Sequelize.STRING,
-	content: Sequelize.STRING
+	content: Sequelize.TEXT
 })
 db.posts.sync();
 module.exports = db;
