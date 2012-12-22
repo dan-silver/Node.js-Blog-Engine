@@ -1,0 +1,6 @@
+test*.js
+*.swp
+.idea
+.DS_STORE
+node_modules
+npm-debug.log
