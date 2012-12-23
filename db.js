@@ -20,4 +20,10 @@ db.posts = sequelize.define('posts', {
 	content: Sequelize.TEXT
 })
 db.posts.sync();
+db.users = sequelize.define('users', {
+	GoogleId: Sequelize.STRING,
+	name: Sequelize.STRING,
+	email: Sequelize.STRING
+})
+db.posts.sync();
 module.exports = db;
