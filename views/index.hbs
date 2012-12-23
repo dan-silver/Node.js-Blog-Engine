@@ -1,3 +1,6 @@
+{{#user}}
+	Logged in as {{displayName}}
+{{/user}}
 {{#each posts}}
 	<h3><a href="/post/{{this.title}}">{{this.title}}</a></h3>
 	<p>{{{this.content}}}</p>
