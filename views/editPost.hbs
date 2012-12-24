@@ -1,10 +1,10 @@
-<div class="span9">
+<div class="span10">
 	<form>
-		<input class="input-xxlarge" type="text" value="{{post.title}}">
-		<textarea class="input-xxlarge" rows="13">{{post.content}}</textarea>
+		<input class="input-xxlarge" type="text" placeholder="Blog Entry Title" value="{{post.title}}">
+		<textarea class="xxlarge ckeditor" id="editor1" name="editor1" rows="13">{{{post.content}}}</textarea>
 		<div class="pull-right">
-			<button type="button" class="btn btn-danger">Cancel</button>
-			<button type="submit" class="btn btn-info">Save changes</button>
+			<a href="/" class="btn btn-danger">Cancel</a>
+			<button type="submit" class="btn btn-info">Publish</button>
 		</div>
 	</form>
 </div>

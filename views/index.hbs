@@ -1,7 +1,7 @@
 {{#each posts}}
+	<h3><a href="/post/{{this.title}}">{{this.title}}</a></h3>
 	{{#../user}}
 		<a href="/post/{{../this.title}}/edit"><span class="label label-info pull-right">Edit</span></a>
 	{{/../user}}
-	<h3><a href="/post/{{this.title}}">{{this.title}}</a></h3>
-	<p>{{{this.content}}}</p>
+	<p post="{{this.id}}">{{{this.content}}}</p>
 {{/each}}

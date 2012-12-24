@@ -5,20 +5,23 @@ exports.index = function(req, res){
 		console.log('User is logged in as '+req.user.displayName);
 	}
 	db.posts.findAll().success(function(posts) {
-		res.render('index', { title: 'Dan\'s Blog', posts: posts, user: req.user});
+		res.render('index', {posts: posts, user: req.user});
 	});
 };
 
 exports.post = function(req, res){
 	db.posts.find({where: {title:req.params.title}}).success(function(post) {
-		res.render('post', { title: 'Dan\'s Blog', post: post});
+		res.render('post', {post: post});
 	});
 };
 
+exports.newPost = function(req, res){
+	res.render('newPost', {});
+};
 exports.editPost = function(req, res){
 	db.posts.find({where: {title:req.params.title}}).success(function(post) {
 		if (req.params.mode == "edit") {
-			res.render('editPost', { title: 'Dan\'s Blog', post: post});
+			res.render('editPost', {post: post});
 		}
 	});
 };

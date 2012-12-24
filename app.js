@@ -41,7 +41,6 @@ app.configure(function(){
 app.configure('development', function(){
   app.use(express.errorHandler());
 });
-
 passport.use(new GoogleStrategy({
     returnURL: 'http://localhost:3000/auth/google/return',
     realm: 'http://localhost:3000/'
@@ -59,7 +58,6 @@ passport.use(new GoogleStrategy({
     });
   }
 ));
-
 app.get('/', routes.index);
 app.get('/post/:title', routes.post);
 app.get('/post/:title/:mode', routes.editPost);
