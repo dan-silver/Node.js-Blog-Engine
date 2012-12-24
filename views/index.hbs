@@ -1,7 +1,7 @@
-{{#user}}
-	Logged in as {{displayName}}
-{{/user}}
 {{#each posts}}
+	{{#../user}}
+		<a href="/post/{{../this.title}}/edit"><span class="label label-info pull-right">Edit</span></a>
+	{{/../user}}
 	<h3><a href="/post/{{this.title}}">{{this.title}}</a></h3>
 	<p>{{{this.content}}}</p>
 {{/each}}

@@ -62,6 +62,7 @@ passport.use(new GoogleStrategy({
 
 app.get('/', routes.index);
 app.get('/post/:title', routes.post);
+app.get('/post/:title/:mode', routes.editPost);
 
 app.get('/auth/google', 
   passport.authenticate('google', { failureRedirect: '/login' }),

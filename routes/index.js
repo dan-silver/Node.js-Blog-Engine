@@ -14,3 +14,11 @@ exports.post = function(req, res){
 		res.render('post', { title: 'Dan\'s Blog', post: post});
 	});
 };
+
+exports.editPost = function(req, res){
+	db.posts.find({where: {title:req.params.title}}).success(function(post) {
+		if (req.params.mode == "edit") {
+			res.render('editPost', { title: 'Dan\'s Blog', post: post});
+		}
+	});
+};
