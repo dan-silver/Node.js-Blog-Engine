@@ -27,18 +27,15 @@
     <div class="container-narrow">
       <div>
         <ul class="nav nav-pills pull-right">
-          <li class="active"><a href="/">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
+			<li class="active"><a href="/">Home</a></li>
+			{{#user}}
+				<li><a href="/newPost">New Blog Entry</a></li>
+			{{/user}}
         </ul>
         <h3 class="muted">{{title}}</h3>
       </div>
       <div class="row-fluid">
 		{{{body}}}
-      </div>
-      <hr>
-      <div class="footer">
-        <p>Company 2012</p>
       </div>
     </div> <!-- /container -->
 </body>

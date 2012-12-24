@@ -2,7 +2,7 @@
 	<h3><a href="/post/{{this.title}}">{{this.title}}</a></h3>
 	{{#../user}}
 		<a href="/post/{{../this.title}}/edit"><span class="label label-info">Edit</span></a>
-		<a href="/post/{{../this.title}}/delete"><span class="label label-info">Delete</span></a>
+		<a href="/post/{{../this.title}}/confirm-deletion"><span class="label label-info">Delete</span></a>
 	{{/../user}}
 	<p post="{{this.id}}">{{{this.content}}}</p>
 {{/posts}}

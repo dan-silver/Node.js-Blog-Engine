@@ -48,13 +48,7 @@ passport.use(new GoogleStrategy({
     realm: 'http://localhost:3000/'
   },
   function(identifier, profile, done) {
-    // asynchronous verification, for effect...
     process.nextTick(function () {
-      
-      // To keep the example simple, the user's Google profile is returned to
-      // represent the logged-in user.  In a typical application, you would want
-      // to associate the Google account with a user record in your database,
-      // and return that user instead.
       profile.identifier = identifier;
       return done(null, profile);
     });
@@ -62,6 +56,14 @@ passport.use(new GoogleStrategy({
 ));
 app.get('/', routes.index);
 app.get('/post/:title', routes.post);
+
+app.get('/newPost', routes.newPost);
+app.get('/createPost', function(req, res) {
+	db.posts.create({title: req.query.title, content: req.query.content}).success(function(result) {
+		res.redirect('/');
+	});
+});
+
 app.get('/post/:title/:mode', routes.editPost);
 app.get('/updatePost', function (req, res) {
 	db.posts.find( {where: {id:req.query.postId}}).success(function(post) {
