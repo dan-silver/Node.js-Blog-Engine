@@ -13,6 +13,8 @@ var express = require('express')
 
 var app = express();
 
+app.locals.title = 'Dan Silver\'s Blog';
+
 passport.serializeUser(function(user, done) {
   done(null, user);
 });
@@ -61,17 +63,23 @@ passport.use(new GoogleStrategy({
 app.get('/', routes.index);
 app.get('/post/:title', routes.post);
 app.get('/post/:title/:mode', routes.editPost);
+app.get('/updatePost', function (req, res) {
+	db.posts.find( {where: {id:req.query.postId}}).success(function(post) {
+		post.title = req.query.title;
+		post.content = req.query.content;
+		post.save();
+		res.redirect('/');
+	});
+});
 
 app.get('/auth/google', 
   passport.authenticate('google', { failureRedirect: '/login' }),
   function(req, res) {
     res.redirect('/');
   });
-app.get('/auth/google/return', 
-  passport.authenticate('google', { failureRedirect: '/login' }),
-  function(req, res) {
+app.get('/auth/google/return', passport.authenticate('google', { failureRedirect: '/login' }), function(req, res) {
     res.redirect('/');
-  });
+});
 
 app.get('/logout', function(req, res){
   req.logout();

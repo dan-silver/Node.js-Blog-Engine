@@ -1,7 +1,8 @@
 <div class="span10">
-	<form>
-		<input class="input-xxlarge" type="text" placeholder="Blog Entry Title" value="{{post.title}}">
-		<textarea class="xxlarge ckeditor" id="editor1" name="editor1" rows="13">{{{post.content}}}</textarea>
+	<form method="get" action="/updatePost">
+		<input type="hidden" name="postId" value="{{post.id}}">
+		<input class="input-xxlarge" name="title" type="text" placeholder="Blog Entry Title" value="{{post.title}}">
+		<textarea class="xxlarge ckeditor" name="content" rows="13">{{{post.content}}}</textarea>
 		<div class="pull-right">
 			<a href="/" class="btn btn-danger">Cancel</a>
 			<button type="submit" class="btn btn-info">Publish</button>
