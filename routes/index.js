@@ -4,7 +4,7 @@ exports.index = function(req, res){
 	//	console.log(req.user);
 		console.log('User is logged in as '+req.user.displayName);
 	}
-	db.posts.findAll().success(function(posts) {
+	db.posts.findAll({order: 'createdAt DESC'}).success(function(posts) {
 		res.render('index', {posts: posts, user: req.user});
 	});
 };
