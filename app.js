@@ -45,12 +45,14 @@ app.configure('development', function(){
 });
 if (!process.env.database) {
 	var callbackURL = 'http://localhost:3000/auth/google/return'; 
+	var realm = 'http://localhost:3000/'; 
 } else {
 	var callbackURL = 'http://dan-silver.herokuapp.com/auth/google/return'; 
+	var realm = 'http://dan-silver.herokuapp.com'; 
 }
 passport.use(new GoogleStrategy({
     returnURL: callbackURL,
-    realm: 'http://localhost:3000/'
+    realm: realm
   },
   function(identifier, profile, done) {
     process.nextTick(function () {
