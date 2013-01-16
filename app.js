@@ -86,7 +86,8 @@ app.get('/auth/google',
   function(req, res) {
     res.redirect('/');
   });
-app.get('/auth/google/return', passport.authenticate('google', { failureRedirect: '/login' }), function(req, res) {
+app.get('/auth/google/return', ensureAdmin, passport.authenticate('google', { failureRedirect: '/login' }), function(req, res) {
+	if (req.user && req.user.emails[0].value == "dannysilver3@gmail.com") { return next(); }
     res.redirect('/');
 });
 
