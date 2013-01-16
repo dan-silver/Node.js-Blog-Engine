@@ -86,8 +86,12 @@ app.get('/auth/google',
   function(req, res) {
     res.redirect('/');
   });
-app.get('/auth/google/return', passport.authenticate('google', { failureRedirect: '/' }), ensureAdmin, function(req, res) {
-    res.redirect('/');
+app.get('/auth/google/return', passport.authenticate('google', { failureRedirect: '/' }), function(req, res) {
+	if (req.user && req.user.emails[0].value == "dannysilver3@gmail.com") {
+		res.redirect('/');
+	} else {
+		res.redirect('/logout');
+	}
 });
 
 app.get('/logout', function(req, res){
