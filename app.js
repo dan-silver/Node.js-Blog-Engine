@@ -82,12 +82,11 @@ app.get('/updatePost', ensureAdmin, function (req, res) {
 });
 
 app.get('/auth/google', 
-  passport.authenticate('google', { failureRedirect: '/login' }),
+  passport.authenticate('google', { failureRedirect: '/' }),
   function(req, res) {
     res.redirect('/');
   });
-app.get('/auth/google/return', ensureAdmin, passport.authenticate('google', { failureRedirect: '/login' }), function(req, res) {
-	if (req.user && req.user.emails[0].value == "dannysilver3@gmail.com") { return next(); }
+app.get('/auth/google/return', passport.authenticate('google', { failureRedirect: '/' }), ensureAdmin, function(req, res) {
     res.redirect('/');
 });
 
