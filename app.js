@@ -31,7 +31,7 @@ app.configure(function(){
   app.use(express.logger('dev'));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
-  app.use(express.cookieParser('your secret here'));
+  app.use(express.cookieParser('your secret here35'));
   app.use(express.session());
   app.use(passport.initialize());
   app.use(passport.session());
@@ -64,8 +64,8 @@ app.get('/createPost', function(req, res) {
 	});
 });
 
-app.get('/post/:title/:mode', routes.editPost);
-app.get('/updatePost', function (req, res) {
+app.get('/post/:title/:mode', ensureAdmin, routes.editPost);
+app.get('/updatePost', ensureAdmin, function (req, res) {
 	db.posts.find( {where: {id:req.query.postId}}).success(function(post) {
 		post.title = req.query.title;
 		post.content = req.query.content;
@@ -91,3 +91,8 @@ app.get('/logout', function(req, res){
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
+
+function ensureAdmin(req, res, next) {
+  if (req.user && req.user.emails[0].value == "dannysilver3@gmail.com") { return next(); }
+  res.redirect('/');
+}
