@@ -1,7 +1,7 @@
 {{ include pre-content }}
 <div class="span12">
 	<form method="get" action="/{{ if (post.title) { }}updatePost{{ } else { }}createPost{{ } }}">
-		<input type="hidden" name="postId" value="{{post.id}}">
+		<input type="hidden" name="postId" value="{{=post.id}}">
 		<input style="width:100%;" name="title" type="text" placeholder="Blog Entry Title" value="{{= post.title}}">
 		<textarea class="xxlarge ckeditor" name="content">{{- post.content}}</textarea>
 		<div id="edit-form-actions" class="pull-right">
