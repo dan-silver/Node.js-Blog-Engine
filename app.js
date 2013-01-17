@@ -88,7 +88,7 @@ app.get('/updatePost', ensureAdmin, function (req, res) {
 	});
 });
 
-app.get('/auth/google', 
+app.get('/login', 
   passport.authenticate('google', { failureRedirect: '/' }),
   function(req, res) {
     res.redirect('/');
