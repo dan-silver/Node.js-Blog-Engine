@@ -1,0 +1,16 @@
+#site-title a:hover {
+  text-decoration: none;
+}
+a,
+color: #00B7FF,
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding-bottom: 40px;
+}
+.container-narrow {
+  margin: 0 auto;
+  max-width: 700px;
+}
+#edit-form-actions {
+  margin-top: 10px;
+}

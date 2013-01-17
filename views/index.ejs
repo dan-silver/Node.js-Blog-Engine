@@ -1,0 +1,10 @@
+{{ include pre-content }}
+{{ posts.forEach(function(post) { }}
+	<h3><a href="/post/{{= post.title}}">{{= post.title}}</a></h3>
+	{{ if (user) { }}
+		<a href="/post/{{= post.title}}/edit"><span class="label label-info">Edit</span></a>
+		<a href="/post/{{= post.title}}/confirm-deletion"><span class="label label-info">Delete</span></a>
+	{{ } }}
+	<p post="{{this.id}}">{{- post.content}}</p>
+{{ }) }}
+{{ include post-content }}

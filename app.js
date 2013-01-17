@@ -9,6 +9,7 @@ var express = require('express')
   , db = require('./db')
   , path = require('path')
   , passport = require('passport')
+  , ejs = require('ejs')
   , GoogleStrategy = require('passport-google').Strategy;
 
 var app = express();
@@ -26,7 +27,9 @@ passport.deserializeUser(function(obj, done) {
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
   app.set('views', __dirname + '/views');
-  app.set('view engine', 'hbs');
+  app.set('view engine', 'ejs');
+  ejs.open = '{{';
+  ejs.close = '}}';
   app.use(express.favicon());
   app.use(express.logger('dev'));
   app.use(express.bodyParser());
@@ -64,7 +67,7 @@ passport.use(new GoogleStrategy({
 app.get('/', routes.index);
 app.get('/post/:title', routes.post);
 
-app.get('/newPost', routes.newPost);
+app.get('/newPost', ensureAdmin, routes.newPost);
 app.get('/createPost', function(req, res) {
 	db.posts.create({title: req.query.title, content: req.query.content}).success(function(result) {
 		res.redirect('/');
