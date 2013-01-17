@@ -1,13 +1,13 @@
 var db = require('../db')
 exports.index = function(req, res){
 	db.posts.findAll({order: 'createdAt DESC'}).success(function(posts) {
-		res.render('index', {posts: posts});
+		res.render('index', {posts: posts, noTitleLink: false});
 	});
 };
 
 exports.post = function(req, res) {
 	db.posts.find({where: {title:req.params.title}}).success(function(post) {
-		res.render('post', {post: post});
+		res.render('post', {post: post, noTitleLink: true});
 	});
 };
 

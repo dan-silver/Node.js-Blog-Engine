@@ -1,17 +1,5 @@
 {{ include pre-content }}
 {{ posts.forEach(function(post) { }}
-	{{ if (user) { }}
-	<ul class="nav nav-tabs edit-post-menu">
-		<li class="dropdown">
-			<a class="dropdown-toggle" data-toggle="dropdown" href="#"><b class="caret"></b></a>
-			<ul class="dropdown-menu">
-				<li><a href="/post/{{= post.title}}/edit">Edit</a></li>
-				<li><a href="/post/{{= post.title}}/confirm-deletion">Delete</a></li>
-			</ul>
-		</li>
-	</ul>
-	{{ } }}
-	<h3><a href="/post/{{= post.title}}">{{= post.title}}</a></h3>
-	<p post="{{this.id}}">{{- post.content}}</p>
+	{{ include postTemplate }}
 {{ }) }}
 {{ include post-content }}
