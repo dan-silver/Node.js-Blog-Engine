@@ -38,9 +38,13 @@ app.configure(function(){
   app.use(express.session());
   app.use(passport.initialize());
   app.use(passport.session());
-  app.use(app.router);
+  app.use(function (req, res, next) { // Add variables to every template
+    res.locals.user = req.user;
+    next();
+  });
   app.use(require('stylus').middleware(__dirname + '/public'));
   app.use(express.static(path.join(__dirname, 'public')));
+  app.use(app.router);
 });
 
 app.configure('development', function(){
