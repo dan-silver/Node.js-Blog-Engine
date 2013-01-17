@@ -1,26 +1,28 @@
-{{ if (user) { }}
-	<ul class="nav nav-tabs edit-post-menu">
-		<li class="dropdown">
-			<a class="dropdown-toggle" data-toggle="dropdown" href="#"><b class="caret"></b></a>
-			<ul class="dropdown-menu">
-				<li><a href="/post/{{= post.title}}/edit">Edit</a></li>
-				<li><a href="/post/{{= post.title}}/confirm-deletion">Delete</a></li>
-			</ul>
-		</li>
-	</ul>
-{{ } }}
-<h3>
-	{{ if (noTitleLink) { }}
-		{{= post.title}}
-	{{ } else { }}
-		<a href="/post/{{= post.title}}">{{= post.title}}</a>
+<div class="outer-post">
+	{{ if (user) { }}
+		<ul class="nav nav-tabs edit-post-menu">
+			<li class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#"><b class="caret"></b></a>
+				<ul class="dropdown-menu">
+					<li><a href="/post/{{= post.title}}/edit">Edit</a></li>
+					<li><a href="/post/{{= post.title}}/confirm-deletion">Delete</a></li>
+				</ul>
+			</li>
+		</ul>
 	{{ } }}
-</h3>
-<p post="{{this.id}}">
-	{{ if (noTitleLink) { }}
-		{{- post.content}}</p>
-	{{ } else { }}
-		{{- post.content.substr(0,post.content.search("<h3>"))}}
-		<a class="btn" href="/post/{{= post.title}}">Full Blog Entry<i class="icon-chevron-right" style="margin-top: 3px;margin-left: 3px;"></i></a>
-	{{ } }}
-</p>
+	<h3>{{ if (noTitleLink) { }}
+			{{= post.title}}
+		{{ } else { }}
+			<a href="/post/{{= post.title}}">{{= post.title}}</a>
+		{{ } }}
+	</h3>
+	<div class="muted" style="margin-top: -12px">{{=post.createdAt}}</div>
+	<div class="inner-post">
+		{{ if (noTitleLink) { }}
+			{{- post.content}}
+		{{ } else { }}
+			{{- post.content.substr(0,post.content.search("<h3>"))}}
+			<a class="btn" href="/post/{{= post.title}}">Full Blog Entry<i class="icon-chevron-right" style="margin-top: 3px;margin-left: 3px;"></i></a>
+		{{ } }}
+	</div>
+</div>
