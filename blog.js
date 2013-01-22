@@ -99,7 +99,7 @@ exports.start = function(options) {
 		res.redirect('/');
 	  });
 	app.get('/auth/google/return', passport.authenticate('google', { failureRedirect: '/' }), function(req, res) {
-		if (req.user && req.user.emails[0].value == options.adminGoogleEmail) {
+		if (req.user && (req.user.emails[0].value == options.adminGoogleEmail || options.adminGoogleEmail == "*")) {
 			res.redirect('/');
 		} else {
 			res.redirect('/logout');
@@ -116,7 +116,7 @@ exports.start = function(options) {
 	});
 
 	function ensureAdmin(req, res, next) {
-	  if (req.user && req.user.emails[0].value == options.adminGoogleEmail) { return next(); }
+	  if (req.user && (req.user.emails[0].value == options.adminGoogleEmail || options.adminGoogleEmail == "*")) { return next(); }
 	  res.redirect('/');
 	}
 }
