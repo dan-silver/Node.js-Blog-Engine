@@ -3,5 +3,5 @@ blog.start({
 	title: "Dan Silver's Blog",
 	adminGoogleEmail: 'dannysilver3@gmail.com',
 	port: 3000,
-	domain: 'http://dan-silver.herokuapp.com'
+	liveDomain: 'http://dan-silver.herokuapp.com'
 });
