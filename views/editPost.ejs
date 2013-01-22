@@ -1,9 +1,31 @@
 {{ include pre-content }}
+<link href="/bootstrap-toggle-buttons/bootstrap-toggle-buttons.css" rel="stylesheet">
+<script src="/bootstrap-toggle-buttons/jquery.toggle.buttons.js"></script>
+<script>
+$(function() {
+$('#toggle-button').toggleButtons({
+  animated: true,
+  width: 150,
+  label: {
+    enabled: "Publish",
+    disabled: "Draft"
+  },
+  style: {
+        enabled: "primary",
+        disabled: "warning"
+    }
+});
+
+});
+</script>
 <div class="span12">
 	<form method="get" action="/{{ if (post.title) { }}updatePost{{ } else { }}createPost{{ } }}">
 		<input type="hidden" name="postId" value="{{=post.id}}">
 		<input style="width:100%;" name="title" type="text" placeholder="Blog Entry Title" value="{{= post.title}}">
 		<textarea class="xxlarge ckeditor" name="content">{{- post.content}}</textarea>
+		<div id="toggle-button">
+			<input name="status" type="checkbox" checked="checked" value="published">
+		</div>
 		<div id="edit-form-actions" class="pull-right">
 			<a href="/" class="btn">Cancel</a>
 			<button type="submit" class="btn btn-success">Publish</button>

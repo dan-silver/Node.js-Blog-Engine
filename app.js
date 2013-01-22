@@ -73,16 +73,28 @@ app.get('/post/:title', routes.post);
 
 app.get('/newPost', ensureAdmin, routes.newPost);
 app.get('/createPost', function(req, res) {
-	db.posts.create({title: req.query.title, content: req.query.content}).success(function(result) {
+	console.log(req.query.status);
+	if (req.query.status == 'published') {
+		status = 'published';
+	} else {
+		status = 'draft';
+	}
+	db.posts.create({title: req.query.title, content: req.query.content, status:status}).success(function(result) {
 		res.redirect('/');
 	});
 });
 
 app.get('/post/:title/:mode', ensureAdmin, routes.editPost);
 app.get('/updatePost', ensureAdmin, function (req, res) {
+	console.log(req.query.status);
 	db.posts.find( {where: {id:req.query.postId}}).success(function(post) {
 		post.title = req.query.title;
 		post.content = req.query.content;
+		if (req.query.status == 'published') {
+			post.status = 'published';
+		} else {
+			post.status = 'draft';
+		}
 		post.save();
 		res.redirect('/');
 	});

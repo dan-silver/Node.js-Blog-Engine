@@ -15,9 +15,10 @@ if (!process.env.database) {
 	})
 }
 
-db.posts = sequelize.define('posts', {
+db.posts = sequelize.define('posts-local', {
 	title: Sequelize.STRING,
-	content: Sequelize.TEXT
+	content: Sequelize.TEXT,
+	status: Sequelize.STRING //currently either 'published' or 'draft'
 })
 db.posts.sync();
 module.exports = db;
