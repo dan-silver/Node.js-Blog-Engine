@@ -1,13 +1,22 @@
 var db = require('../db')
 var moment = require('moment');
 
-exports.index = function(req, res){
-	db.posts.findAll({order: 'createdAt DESC', where: {status: 'published'}}).success(function(posts) {
-		posts.forEach(function(post) {
-			post.createdAt = moment(post.createdAt).format("MMMM Do YYYY");
+exports.index = function(req, res) {
+	if (req.user && req.user.emails[0].value == "dannysilver3@gmail.com") {
+		db.posts.findAll({order: 'createdAt DESC'}).success(function(posts) {
+			posts.forEach(function(post) {
+				post.createdAt = moment(post.createdAt).format("MMMM Do YYYY");
+			});
+			res.render('index', {posts: posts, noTitleLink: false});
 		});
-		res.render('index', {posts: posts, noTitleLink: false});
-	});
+	} else {
+		db.posts.findAll({order: 'createdAt DESC', where: {status: 'published'}}).success(function(posts) {
+			posts.forEach(function(post) {
+				post.createdAt = moment(post.createdAt).format("MMMM Do YYYY");
+			});
+			res.render('index', {posts: posts, noTitleLink: false});
+		});
+	}
 };
 
 exports.post = function(req, res) {

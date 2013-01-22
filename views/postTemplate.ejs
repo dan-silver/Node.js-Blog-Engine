@@ -1,21 +1,21 @@
 <div class="outer-post">
 	{{ if (user) { }}
-		<ul class="nav nav-tabs edit-post-menu">
-			<li class="dropdown">
-				<a class="dropdown-toggle" data-toggle="dropdown" href="#"><b class="caret"></b></a>
-				<ul class="dropdown-menu">
-					<li><a href="/post/{{= post.title}}/edit">Edit</a></li>
-					<li><a href="/post/{{= post.title}}/confirm-deletion">Delete</a></li>
-				</ul>
-			</li>
-		</ul>
+		<div class="edit-post-menu">
+			{{ if (post.status == 'draft') { }}
+				<span class="label label-warning">Draft</span>
+			{{ } else { }}
+				<span class="label label-success">Published</span>
+			{{ } }}
+			<a href="/post/{{= post.title}}/edit"><span class="label">Edit</span></a>
+			<a href="/post/{{= post.title}}/confirm-deletion"><span class="label label-important">Delete</span></a>
+		</div>
 	{{ } }}
-	<h3>{{ if (noTitleLink) { }}
+	<h2>{{ if (noTitleLink) { }}
 			{{= post.title}}
 		{{ } else { }}
 			<a href="/post/{{= post.title}}">{{= post.title}}</a>
 		{{ } }}
-	</h3>
+	</h2>
 	<div class="muted" style="margin-top: -12px">{{=post.createdAt}}</div>
 	<div class="inner-post">
 		{{ if (noTitleLink) { }}
