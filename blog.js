@@ -20,6 +20,7 @@ exports.start = function(options) {
 
 	app.locals.title = options.title || 'No Title Set!';
 	app.locals.menu = options.menu || [];
+	app.locals.bootstrapPath = options.bootstrapPath || '/stylesheets/bootstrap.min.css';
 
 	passport.serializeUser(function(user, done) {
 	  done(null, user);
