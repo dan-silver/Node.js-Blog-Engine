@@ -21,7 +21,7 @@
 		{{ if (noTitleLink) { }}
 			{{- post.content}}
 		{{ } else { }}
-			{{- post.content.substr(0,post.content.search("<h3>"))}}
+			{{- post.content.substr(0,post.content.search("<hr />"))}}
 			<a class="btn" href="/post/{{= post.title}}">Full Blog Entry »</i></a>
 		{{ } }}
 	</div>

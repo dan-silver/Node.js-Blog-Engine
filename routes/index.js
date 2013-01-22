@@ -2,8 +2,7 @@ var db = require('../db')
   , moment = require('moment');
 exports.set = function(options) {
 	exports.index = function(req, res) {
-		
-		if (req.user && (req.user.emails[0].value == options.adminGoogleEmail || options.adminGoogleEmail == "*")) {
+		if (req.user) {
 			db.posts.findAll({order: 'createdAt DESC'}).success(function(posts) {
 				posts.forEach(function(post) {
 					post.createdAt = moment(post.createdAt).format("MMMM Do YYYY");
@@ -21,7 +20,7 @@ exports.set = function(options) {
 	};
 
 	exports.post = function(req, res) {
-		if (req.user && (req.user.emails[0].value == options.adminGoogleEmail || options.adminGoogleEmail == "*")) {
+		if (req.user) {
 			db.posts.find({where: {title:req.params.title}}).success(function(post) {
 				if (post) {
 					post.createdAt = moment(post.createdAt).format("MMMM Do YYYY");

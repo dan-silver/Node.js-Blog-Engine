@@ -116,7 +116,7 @@ exports.start = function(options) {
 	});
 
 	function ensureAdmin(req, res, next) {
-	  if (req.user && (req.user.emails[0].value == options.adminGoogleEmail || options.adminGoogleEmail == "*")) { return next(); }
+	  if (req.user) { return next(); }
 	  res.redirect('/');
 	}
 }
