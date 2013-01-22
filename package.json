@@ -1,4 +1,15 @@
 { "name": "blog",
-  "description" : "Express and Bootstrap powered blogging",
+  "description" : "Express and Twitter Bootstrap powered blogging",
   "version": "0.0.1",
-  "main" : "./blog.js" }
+  "main" : "./blog.js",
+  "keywords": ["blog"],
+  "bugs": "https://github.com/dan-silver/Node.js-Blog-Engine/issues",
+  "author": { "name" : "Dan Silver",
+			  "url" : "http://dan-silver.herokuapp.com/"
+			},
+  "files": ["resources", "routes", "views", "blog.js", "db.js", "README.md", "package.json"],
+  "repository" : { 
+	"type" : "git",
+	"url" : "https://github.com/dan-silver/Node.js-Blog-Engine"
+  }
+  }
