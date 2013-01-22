@@ -17,7 +17,6 @@ var blog = require('blog');
 blog.start({
 	title: "My awesome blog",
 	adminGoogleEmail: 'myGoogleEmail@gmail.com',
-	port: 3000,
 	liveDomain: 'http://some-app.herokuapp.com',
 	database: {
 		database: config.database,
@@ -36,7 +35,7 @@ var blog = require('blog');
 blog.start({
 	title: "My awesome blog",
 	adminGoogleEmail: 'myGoogleEmail@gmail.com',
-	port: 3000,
+	localPort: 5000, //defaults to 3000
 	liveDomain: 'http://some-app.herokuapp.com',
 	database: {
 		database: config.database,
