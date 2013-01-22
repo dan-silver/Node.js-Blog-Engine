@@ -1,5 +1,8 @@
-var blog = require('blog')
-  , config = require('./config');
+var blog = require('blog');
+
+if (!process.env.PORT) {
+	var config = require('./config');
+}
 
 blog.start({
 	title: "Dan Silver's Blog",
