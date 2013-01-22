@@ -10,10 +10,10 @@ blog.start({
 	port: 3000,
 	liveDomain: 'http://dan-silver.herokuapp.com',
 	database: {
-		database: config.database || process.env.database,
-		user: config.user || process.env.user,
-		password: config.password || process.env.password,
-		host: config.host || process.env.host,
-		dbPort: config.dbPort || process.env.dbPort
+		database: process.env.database || config.database,
+		user: process.env.user || config.user,
+		password: process.env.password || config.password,
+		host: process.env.host || config.host,
+		dbPort: process.env.dbPort || config.dbPort
 	}
 });
