@@ -9,7 +9,7 @@ Warning! This is still being developed!!!  But, if you want to help out in devel
 npm install bootstrap-blog
 ```
 
-##Sample Usage
+##Simple Usage
 The following code should be placed in your main serverside javascript file that is executed with node. For example, if this is placed in app.js, then node app.js would run the blog.
 ```javascript
 var blog = require('blog');
@@ -28,4 +28,47 @@ blog.start({
 	}
 });
 ```
+##Advanced Usage
+Custom menu items can be set by passing in an array of menu objects.  The same goes for custom pages.
+```javascript
+var blog = require('blog');
 
+blog.start({
+	title: "My awesome blog",
+	adminGoogleEmail: 'myGoogleEmail@gmail.com',
+	port: 3000,
+	liveDomain: 'http://some-app.herokuapp.com',
+	database: {
+		database: config.database,
+		user: config.user,
+		password: config.password,
+		host: config.host,
+		dbPort: config.dbPort
+	},
+	pages:[
+		{
+			path: '/about',
+			callback: function (req,res) {
+				console.log('User has visitied the about page.');
+				res.send('About page coming soon!');
+			}
+		},
+		{
+			path: '/about/history',
+			callback: function (req,res) {
+				console.log('User has visitied the history page.');
+				res.send('History page coming soon!');
+			}	
+		}
+	],
+	menu: [
+		{
+			title: 'Google',
+			path: 'http://www.google.com'
+		}, {
+			title: 'Amazon',
+			path: 'http://www.amazon.com'
+		}
+	]
+});
+```
