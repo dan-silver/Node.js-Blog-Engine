@@ -15,7 +15,7 @@ exports.start = function(options) {
 		process.env.dbPort = options.database.dbPort;
 	}
 	var db = require('./db')
-		, routes = require('./routes/index.js')
+	  , routes = require('./routes/index.js');
 	routes.set(options);
 	app.locals.title = options.title;
 
@@ -119,4 +119,7 @@ exports.start = function(options) {
 	  if (req.user) { return next(); }
 	  res.redirect('/');
 	}
+	options.pages.forEach(function(page) {
+		app.get(page.path, page.callback);
+	});
 }

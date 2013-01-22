@@ -1,6 +1,6 @@
 { "name": "bootstrap-blog",
   "description" : "Express and Twitter Bootstrap powered blogging",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "main" : "./blog.js",
   "keywords": ["blog"],
   "bugs": "https://github.com/dan-silver/Node.js-Blog-Engine/issues",
