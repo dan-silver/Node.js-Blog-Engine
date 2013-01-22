@@ -1,6 +1,6 @@
 #Node.js Blog Engine
 The goal of this project is to create a simple, reusable blog template for Node.js.  By passing in a few options, you can quickly have a fully functioning blog, including WYSIWYG editing, database saving, Disqus comments, draft saving options, and a responsive Twitter Bootstrap theme.
-##Example
+##Live Example
 You can go to http://nodejs-blog-engine-example.herokuapp.com/ to view the example site.  To login as the admin, go to http://nodejs-blog-engine-example.herokuapp.com/login. For the example website, any Google account will have admin access.
 
 ##Installation
@@ -27,8 +27,43 @@ blog.start({
 	}
 });
 ```
-##Advanced Usage
+##Options
+###Menu Items and Custom Pages
 Custom menu items can be set by passing in an array of menu objects.  The same goes for custom pages.
+```javascript
+	pages:[
+		{
+			path: '/about',
+			callback: function (req,res) {
+				console.log('User has visitied the about page.');
+				res.send('About page coming soon!');
+			}
+		},
+		{
+			path: '/about/history',
+			callback: function (req,res) {
+				console.log('User has visitied the history page.');
+				res.send('History page coming soon!');
+			}	
+		}
+	],
+	menu: [
+		{
+			title: 'Google',
+			path: 'http://www.google.com'
+		}, {
+			title: 'Amazon',
+			path: 'http://www.amazon.com'
+		}
+	]
+```
+
+###Different Bootstrap Themes
+You can load in any Twitter Bootstrap theme by specifying the path to the css file.
+```javascript
+bootstrapPath: '/css/bootstrap.min.css'
+```
+### Example
 ```javascript
 var blog = require('blog');
 
@@ -44,6 +79,7 @@ blog.start({
 		host: config.host,
 		dbPort: config.dbPort
 	},
+	bootstrapPath: '/css/bootstrap.min.css',
 	pages:[
 		{
 			path: '/about',
