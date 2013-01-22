@@ -1,4 +1,4 @@
-{ "name": "blog",
+{ "name": "bootstrap-blog",
   "description" : "Express and Twitter Bootstrap powered blogging",
   "version": "0.0.1",
   "main" : "./blog.js",
