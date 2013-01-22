@@ -30,7 +30,7 @@ exports.start = function(options) {
 	});
 
 	app.configure(function(){
-	  app.set('port', process.env.PORT || options.port);
+	  app.set('port', process.env.PORT || options.localPort || 3000);
 	  app.set('views', __dirname + '/views');
 	  app.set('view engine', 'ejs');
 	  ejs.open = '{{';
@@ -114,7 +114,7 @@ exports.start = function(options) {
 	});
 
 	http.createServer(app).listen(app.get('port'), function(){
-	  console.log("Express server listening on port " + app.get('port'));
+	  console.log("Blog started on port " + app.get('port'));
 	});
 
 	function ensureAdmin(req, res, next) {
