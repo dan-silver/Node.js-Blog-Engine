@@ -11,5 +11,16 @@
   "repository" : { 
 	"type" : "git",
 	"url" : "https://github.com/dan-silver/Node.js-Blog-Engine"
+  },
+  { "dependencies" :
+	{"ejs":"0.8.x",
+	"express":"3.x",
+	"moment":"1.7.x",
+	"mysql":"2.x",
+	"passport":"*",
+	"passport-google":"*",
+	"sequelize":"1.x",
+	"stylus":"*"
+	}
   }
   }
