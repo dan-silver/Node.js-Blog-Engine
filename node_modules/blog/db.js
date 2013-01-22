@@ -15,7 +15,7 @@ if (!process.env.database) {
 	})
 }
 
-db.posts = sequelize.define('posts-local', {
+db.posts = sequelize.define('posts', {
 	title: Sequelize.STRING,
 	content: Sequelize.TEXT,
 	status: Sequelize.STRING //currently either 'published' or 'draft'
