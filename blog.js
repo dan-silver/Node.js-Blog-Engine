@@ -17,7 +17,9 @@ exports.start = function(options) {
 	var db = require('./db')
 	  , routes = require('./routes/index.js');
 	routes.set(options);
-	app.locals.title = options.title;
+
+	app.locals.title = options.title || 'No Title Set!';
+	app.locals.menu = options.menu || [];
 
 	passport.serializeUser(function(user, done) {
 	  done(null, user);
@@ -119,7 +121,9 @@ exports.start = function(options) {
 	  if (req.user) { return next(); }
 	  res.redirect('/');
 	}
-	options.pages.forEach(function(page) {
-		app.get(page.path, page.callback);
-	});
+	if (options.pages) {
+		options.pages.forEach(function(page) {
+			app.get(page.path, page.callback);
+		});
+	}
 }

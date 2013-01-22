@@ -36,7 +36,10 @@
 					<a class="brand" href="/">{{= title }}</a>
 					<div class="nav-collapse collapse">
 						<ul class="nav pull-right">
-						  <li class="active"><a href="/">Home</a></li>
+						  <li><a href="/">Home</a></li>
+						{{ menu.forEach(function(item) { }}
+							<li><a href="{{=item.path}}">{{=item.title}}</a></li>
+						{{ }); }}
 							{{ if (user) { }}
 								<li><a href="/newPost">New Blog Entry</a></li>
 								<li><a href="/logout">Logout</a></li>
