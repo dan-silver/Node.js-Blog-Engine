@@ -37,14 +37,14 @@ exports.start = function(options) {
 	  ejs.open = '{{';
 	  ejs.close = '}}';
 	  app.use(express.favicon());
-	  app.use(express.logger('dev'));
+	//  app.use(express.logger('dev'));
 	  app.use(express.bodyParser());
 	  app.use(express.methodOverride());
 	  app.use(express.cookieParser('your secret here35'));
 	  app.use(express.session());
 	  app.use(passport.initialize());
 	  app.use(passport.session());
-	  app.use(function (req, res, next) { // Add variables to every template
+	  app.use(function (req, res, next) { // Add user variable to every template
 		res.locals.user = req.user;
 		next();
 	  });
