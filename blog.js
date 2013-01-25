@@ -3,7 +3,25 @@ var express = require('express')
   , path = require('path')
   , passport = require('passport')
   , ejs = require('ejs')
+  , fs = require('fs')
+  , util = require('util')
   , GoogleStrategy = require('passport-google').Strategy;
+
+fs.mkdir('views',function(e){
+    if(!e || (e.code === 'EEXIST')){
+        fs.readdir('node_modules/bootstrap-blog/default_views/', function(err,files) {
+			files.forEach(function(file) {
+				fs.exists('views/'+file, function (exists) {
+					if (!exists) {
+						fs.createReadStream('node_modules/bootstrap-blog/default_views/'+file).pipe(fs.createWriteStream('views/'+file));
+					}
+				});
+			});
+		});
+    } else {
+        console.log(e);
+    }
+});
 
 var app = express();
 exports.start = function(options) {
@@ -32,7 +50,7 @@ exports.start = function(options) {
 
 	app.configure(function(){
 	  app.set('port', process.env.PORT || options.localPort || 3000);
-	  app.set('views', __dirname + '/views');
+	  app.set('views', __dirname+'/../../views');
 	  app.set('view engine', 'ejs');
 	  ejs.open = '{{';
 	  ejs.close = '}}';
