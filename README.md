@@ -63,7 +63,9 @@ You can load in any Twitter Bootstrap theme by specifying the path to the css fi
 ```javascript
 bootstrapPath: '/css/bootstrap.min.css'
 ```
-### Example
+###Modifying templates
+  When you run the blog for the first time, a views folder is created in your top directory.  Edit these files to change the layout of the website.  Since these are outside the node_modules folder, they will not be overridden during updates.
+###Example
 ```javascript
 var blog = require('blog');
 
