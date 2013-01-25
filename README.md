@@ -1,7 +1,7 @@
 #Node.js Blog Engine
 The goal of this project is to create a simple, reusable blog template for Node.js.  By passing in a few options, you can quickly have a fully functioning blog, including WYSIWYG editing, database saving, Disqus comments, draft saving options, and a responsive Twitter Bootstrap theme.
 
-<img width="700px" src="http://content.screencast.com/users/dan-silver78/folders/Jing/media/8a8f3860-e58b-4bea-9a4a-fe170b19e828/2013-01-24_2042.png">
+<img width="800px" src="http://content.screencast.com/users/dan-silver78/folders/Jing/media/ac03671a-dc3d-4b5a-855b-ad1fdbbb999b/2013-01-25_1156.png">
 
 ##Live Example
 You can go to http://nodejs-blog-engine-example.herokuapp.com/ to view the example site.  To login as the admin, go to http://nodejs-blog-engine-example.herokuapp.com/login. For the example website, any Google account will have admin access.
