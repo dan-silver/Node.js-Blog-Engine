@@ -13,7 +13,7 @@ npm install bootstrap-blog
 ```
 
 ##Simple Usage
-The following code should be placed in your main serverside javascript file that is executed with node. For example, if this is placed in app.js, then node app.js would run the blog.
+The following code should be placed in your main serverside javascript file that is executed with node. For example, if this is placed in app.js, then ```node app.js``` would run the blog.
 ```javascript
 var blog = require('blog');
 
@@ -31,10 +31,23 @@ blog.start({
 });
 ```
 ##Options
-###Menu Items and Custom Pages
-Custom menu items can be set by passing in an array of menu objects.  The same goes for custom pages.
+###Menu Items
+Custom menu items can be set by passing in an array of menu objects.
 ```javascript
-	pages:[
+	menu: [
+		{
+			title: 'Google',
+			path: 'http://www.google.com'
+		}, {
+			title: 'Amazon',
+			path: 'http://www.amazon.com'
+		}
+	]
+```
+###Custom Pages
+If you want to create a custom page (not a blog posting), use the pages property.
+```javascript
+pages:[
 		{
 			path: '/about',
 			callback: function (req,res) {
@@ -49,18 +62,8 @@ Custom menu items can be set by passing in an array of menu objects.  The same g
 				res.send('History page coming soon!');
 			}	
 		}
-	],
-	menu: [
-		{
-			title: 'Google',
-			path: 'http://www.google.com'
-		}, {
-			title: 'Amazon',
-			path: 'http://www.amazon.com'
-		}
 	]
 ```
-
 ###Different Bootstrap Themes
 You can load in any Twitter Bootstrap theme by specifying the path to the css file.
 ```javascript
