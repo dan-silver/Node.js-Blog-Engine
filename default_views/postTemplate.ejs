@@ -22,7 +22,7 @@
 			{{- post.content}}
 		{{ } else { }}
 			{{- post.content.substr(0,post.content.search("</p>"))}}</p>
-			<a class="btn" href="/post/{{= post.title}}">Full Blog Entry »</i></a>
+			<div class="read-more-btn"><a class="btn btn-small" href="/post/{{= post.title}}">Full Blog Entry »</i></a></div>
 		{{ } }}
 	</div>
 </div>
