@@ -13,8 +13,8 @@
 	"url" : "https://github.com/dan-silver/Node.js-Blog-Engine"
   },
   "dependencies" : {
-	"ejs":"0.8.x",
 	"express":"3.x",
+	"jade":"*",
 	"moment":"1.7.x",
 	"mysql":"2.x",
 	"passport":"*",
