@@ -1,7 +1,7 @@
 #Node.js Blog Engine
 The goal of this project is to create a simple, reusable blog template for Node.js.  By passing in a few options, you can quickly have a fully functioning blog, including WYSIWYG editing, database saving, Disqus comments, draft saving options, and a responsive Twitter Bootstrap theme.
 
-<img width="800px" src="http://content.screencast.com/users/dan-silver78/folders/Jing/media/ac03671a-dc3d-4b5a-855b-ad1fdbbb999b/2013-01-25_1156.png">
+<img width="800px" src="http://content.screencast.com/users/dan-silver78/folders/Jing/media/e7768b90-d5fd-49fb-9cd6-1dfb103ecc40/2013-01-25_1535.png">
 
 ##Live Example
 You can go to http://nodejs-blog-engine-example.herokuapp.com/ to view the example site.  To login as the admin, go to http://nodejs-blog-engine-example.herokuapp.com/login. For the example website, any Google account will have admin access.
@@ -13,7 +13,7 @@ npm install bootstrap-blog
 ```
 
 ##Simple Usage
-The following code should be placed in your main serverside javascript file that is executed with node. For example, if this is placed in app.js, then node app.js would run the blog.
+The following code should be placed in your main serverside javascript file that is executed with node. For example, if this is placed in app.js, then ```node app.js``` would run the blog.
 ```javascript
 var blog = require('blog');
 
@@ -31,10 +31,23 @@ blog.start({
 });
 ```
 ##Options
-###Menu Items and Custom Pages
-Custom menu items can be set by passing in an array of menu objects.  The same goes for custom pages.
+###Menu Items
+Custom menu items can be set by passing in an array of menu objects.
 ```javascript
-	pages:[
+	menu: [
+		{
+			title: 'Google',
+			path: 'http://www.google.com'
+		}, {
+			title: 'Amazon',
+			path: 'http://www.amazon.com'
+		}
+	]
+```
+###Custom Pages
+If you want to create a custom page (not a blog posting), use the pages property.
+```javascript
+pages:[
 		{
 			path: '/about',
 			callback: function (req,res) {
@@ -49,18 +62,8 @@ Custom menu items can be set by passing in an array of menu objects.  The same g
 				res.send('History page coming soon!');
 			}	
 		}
-	],
-	menu: [
-		{
-			title: 'Google',
-			path: 'http://www.google.com'
-		}, {
-			title: 'Amazon',
-			path: 'http://www.amazon.com'
-		}
 	]
 ```
-
 ###Different Bootstrap Themes
 You can load in any Twitter Bootstrap theme by specifying the path to the css file.
 ```javascript
