@@ -1,0 +1,17 @@
+.outer-post
+ if user
+  .edit-post-menu
+   if (post.status == 'draft')
+    span.label.label-warning Draft
+   else 
+    span.label.label-success Published
+   a(href='/post/' + post.title + '/edit'): span.label Edit
+   a(href='/post/' + post.title + '/confirm-deletion'): span.label.label-important Delete
+ if noTitleLink
+  h2= post.title
+ else
+  h2: a(href='/post/'+post.title)= post.title
+ .muted= post.createdAt
+ .inner-post!= post.content
+ if !noTitleLink
+  .read-more-btn: a.btn.btn-small(href='/post/'+post.title) Full Blog Entry »

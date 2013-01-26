@@ -2,11 +2,9 @@ var express = require('express')
   , http = require('http')
   , path = require('path')
   , passport = require('passport')
-  , ejs = require('ejs')
   , fs = require('fs')
   , util = require('util')
   , GoogleStrategy = require('passport-google').Strategy;
-
 fs.mkdir('views',function(e){
     if(!e || (e.code === 'EEXIST')){
         fs.readdir('node_modules/bootstrap-blog/default_views/', function(err,files) {
@@ -51,9 +49,7 @@ exports.start = function(options) {
 	app.configure(function(){
 	  app.set('port', process.env.PORT || options.localPort || 3000);
 	  app.set('views', __dirname+'/../../views');
-	  app.set('view engine', 'ejs');
-	  ejs.open = '{{';
-	  ejs.close = '}}';
+	  app.set('view engine', 'jade');
 	  app.use(express.favicon());
 	//  app.use(express.logger('dev'));
 	  app.use(express.bodyParser());
@@ -133,7 +129,7 @@ exports.start = function(options) {
 	});
 
 	http.createServer(app).listen(app.get('port'), function(){
-	  console.log("Blog started on port " + app.get('port'));
+	  console.log("Blog A started on port " + app.get('port'));
 	});
 
 	function ensureAdmin(req, res, next) {

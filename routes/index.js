@@ -1,20 +1,22 @@
 var db = require('../db')
   , moment = require('moment');
+
+function formatPostPreviews(posts) {
+	posts.forEach(function(post) {
+		post.content = post.content.substr(0,post.content.search("</p>"));
+		post.createdAt = moment(post.createdAt).format("MMMM Do YYYY");
+	});				
+	return posts;
+}
 exports.set = function(options) {
 	exports.index = function(req, res) {
 		if (req.user) {
 			db.posts.findAll({order: 'createdAt DESC'}).success(function(posts) {
-				posts.forEach(function(post) {
-					post.createdAt = moment(post.createdAt).format("MMMM Do YYYY");
-				});
-				res.render('index', {posts: posts, noTitleLink: false});
+				res.render('index', {posts: formatPostPreviews(posts), noTitleLink: false});
 			});
 		} else {
 			db.posts.findAll({order: 'createdAt DESC', where: {status: 'published'}}).success(function(posts) {
-				posts.forEach(function(post) {
-					post.createdAt = moment(post.createdAt).format("MMMM Do YYYY");
-				});
-				res.render('index', {posts: posts, noTitleLink: false});
+				res.render('index', {posts: formatPostPreviews(posts), noTitleLink: false});
 			});
 		}
 	};

@@ -1,0 +1,46 @@
+html
+ head
+  if (typeof post !== "undefined")
+   title= post.title
+  else
+   title= title
+  meta(charset="utf-8")
+  meta(name="viewport",content="width=device-width, initial-scale=1.0")
+  script(src="/ckeditor/ckeditor.js")
+  script(src="/javascript/jquery-1.8.3.min.js")
+  script(src="/javascript/bootstrap.min.js")
+  link(href=bootstrapPath, rel="stylesheet")
+  link(href="/stylesheets/bootstrap-responsive.min.css", rel="stylesheet")
+  link(href="/stylesheets/style.css", rel="stylesheet")
+ body
+  if user
+   style
+    body {  padding-top: 60px;  }  @media (max-width: 979px) {  body {  padding-top: 0;  }  }
+   div.navbar.navbar-inverse.navbar-fixed-top
+    div.navbar-inner
+     div.container
+      a.btn.btn-navbar(data-toggle="collapse",data-target=".nav-admin")
+       span.icon-bar
+       span.icon-bar
+       span.icon-bar
+      div.nav-collapse.collapse.nav-admin
+       ul.nav
+        li: a(href="/") Home
+        li: a(href="/newPost") New Blog Entry
+       ul.nav.pull-right
+        li: a(href="/logout") Logout
+  div.container-narrow
+   div.navbar
+    div.navbar-inner
+     a.btn.btn-navbar.public-menu(data-toggle="collapse", data-target=".nav-collapse")
+      span.icon-bar
+      span.icon-bar
+      span.icon-bar
+     div.container-fluid
+      a.brand(href="/")= title
+      div.nav-collapse.collapse
+       ul.nav.pull-right
+        each item in menu
+         li: a(href=item.path)= item.title
+   div.row-fluid
+    block content

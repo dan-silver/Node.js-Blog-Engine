@@ -1,0 +1,15 @@
+extends layout
+
+block content
+ if post.title
+  - var action = 'updatePost';
+ else
+  - var action = 'createPost';
+ form(method="get", action='/' + #{action})
+  input(type="hidden",name="postId",value=post.id)
+  input(style="width:100%;",name="title",type="text",placeholder="Blog Entry Title",value=post.title,required)
+  textarea.xxlarge.ckeditor(name="content")!=post.content
+  #edit-form-actions.pull-right
+   a.btn.btn-danger(href="/") Cancel
+   button.btn.btn-inverse(name="status",value="draft",type="submit") Save as Draft
+   button.btn.btn-success(name="status",value="published",type="submit") Publish
