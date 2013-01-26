@@ -23,6 +23,9 @@ fs.mkdir('views',function(e){
 
 var app = express();
 exports.start = function(options) {
+	if (!options.adminGoogleEmail) {
+		console.log('Warning! You need to add the "adminGoogleEmail" property to access the administration settings.');
+	}
 	if (!process.env.database) {
 		process.env.database = options.database.database;
 		process.env.user = options.database.user;
@@ -51,10 +54,10 @@ exports.start = function(options) {
 	  app.set('views', __dirname+'/../../views');
 	  app.set('view engine', 'jade');
 	  app.use(express.favicon());
-	//  app.use(express.logger('dev'));
+//	  app.use(express.logger('dev'));
 	  app.use(express.bodyParser());
 	  app.use(express.methodOverride());
-	  app.use(express.cookieParser('your secret here35'));
+	  app.use(express.cookieParser(options.cookieSecret || Math.random().toString(36).substring(7)));
 	  app.use(express.session());
 	  app.use(passport.initialize());
 	  app.use(passport.session());
@@ -129,7 +132,8 @@ exports.start = function(options) {
 	});
 
 	http.createServer(app).listen(app.get('port'), function(){
-	  console.log("Blog A started on port " + app.get('port'));
+	  console.log('Blog started on port ' + app.get('port') + '.');
+	  console.log('Go to /login to create and edit blog entries.');
 	});
 
 	function ensureAdmin(req, res, next) {

@@ -5,7 +5,7 @@ block content
   - var action = 'updatePost';
  else
   - var action = 'createPost';
- form(method="get", action='/' + #{action})
+ form(method="get", action='/' + action)
   input(type="hidden",name="postId",value=post.id)
   input(style="width:100%;",name="title",type="text",placeholder="Blog Entry Title",value=post.title,required)
   textarea.xxlarge.ckeditor(name="content")!=post.content

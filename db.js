@@ -4,7 +4,8 @@ var mysql = require('mysql'),
 	sequelize;
 sequelize = new Sequelize(process.env.database, process.env.user,  process.env.password, {
 	host: process.env.host,
-	port: process.env.dbPort
+	port: process.env.dbPort,
+	logging: false
 })
 db.posts = sequelize.define('posts', {
 	title: Sequelize.STRING,
