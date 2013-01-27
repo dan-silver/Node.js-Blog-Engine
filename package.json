@@ -1,12 +1,10 @@
 { "name": "bootstrap-blog",
   "description" : "Express and Twitter Bootstrap powered blogging",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "main" : "./blog.js",
   "keywords": ["blog"],
   "bugs": "https://github.com/dan-silver/Node.js-Blog-Engine/issues",
-  "author": { "name" : "Dan Silver",
-			  "url" : "http://dan-silver.herokuapp.com/"
-			},
+  "author": { "name" : "Dan Silver" },
   "files": ["resources", "routes", "default_views", "blog.js", "db.js", "README.md", "package.json"],
   "repository" : { 
 	"type" : "git",
