@@ -1,9 +1,0 @@
-extends layout
-
-block content
- .alert.alert-block.alert-info
-  h4.alert-heading There's no turning back!
-   - var title = 'Are you sure you want to delete the post ' + post.title + '?'
-   p= title
-   p: a.btn.btn-danger(href="/post/"+post.title+"/delete") Delete
-    a.btn(href="/") Cancel

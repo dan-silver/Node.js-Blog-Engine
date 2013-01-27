@@ -1,0 +1,60 @@
+#site-title a:hover {
+  text-decoration: none;
+}
+body {
+  padding-top: 20px;
+  background-image: url("../img/texture.png");
+  background-attachment: fixed;
+}
+.container-narrow {
+  margin: 0 auto;
+  max-width: 700px;
+}
+#edit-form-actions {
+  margin-top: 10px;
+}
+#edit-form-actions .btn {
+  margin-left: 7px;
+}
+.edit-post-menu {
+  float: right;
+}
+.edit-post-menu .label {
+  margin-left: 5px;
+}
+.outer-post {
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  color: #fff;
+}
+.navbar-inner {
+  border: none;
+}
+h2,
+h2 a,
+h2 a:hover {
+  color: #fff;
+}
+a,
+a:hover {
+  color: #999;
+}
+.navbar .nav > li > a:hover {
+  background-color: rgba(102,102,102,0.75);
+}
+.read-more-btn {
+  text-align: right;
+  margin-right: 20px;
+}
+.public-menu {
+  background: rgba(0,0,0,0.84) !important;
+}
+#disqus_thread,
+.navbar-inner,
+.outer-post {
+  background: rgba(0,0,0,0.25);
+}
+#disqus_thread {
+  padding: 10px;
+}

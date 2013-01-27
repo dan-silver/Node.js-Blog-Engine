@@ -18,11 +18,3 @@ block content
    a.btn.btn-danger(href="/") Cancel
    button.btn.btn-inverse(name="status",value="draft",type="submit") Save as Draft
    button.btn.btn-success(name="status",value="published",type="submit") Publish
-
-block append head
- script(src='/datepicker/js/bootstrap-datepicker.js')
- link(href='/datepicker/css/datepicker.css', rel="stylesheet")
- script
-  $(function() {
-   $('.date').datepicker().on('changeDate', function(ev){$('.date').datepicker('hide')});;
-  }); 

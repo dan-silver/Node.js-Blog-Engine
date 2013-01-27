@@ -1,23 +1,40 @@
-{ "name": "bootstrap-blog",
-  "description" : "Express and Twitter Bootstrap powered blogging",
+{
+  "name": "bootstrap-blog",
+  "description": "Express and Twitter Bootstrap powered blogging",
   "version": "0.1.5",
-  "main" : "./blog.js",
-  "keywords": ["blog"],
+  "main": "./blog.js",
+  "keywords": [
+    "blog"
+  ],
   "bugs": "https://github.com/dan-silver/Node.js-Blog-Engine/issues",
-  "author": { "name" : "Dan Silver" },
-  "files": ["resources", "routes", "default_views", "blog.js", "db.js", "README.md", "package.json"],
-  "repository" : { 
-	"type" : "git",
-	"url" : "https://github.com/dan-silver/Node.js-Blog-Engine"
+  "author": {
+    "name": "Dan Silver"
   },
-  "dependencies" : {
-	"express":"3.x",
-	"jade":"*",
-	"moment":"1.7.x",
-	"mysql":"2.x",
-	"passport":"*",
-	"passport-google":"*",
-	"sequelize":"1.x",
-	"stylus":"*"
-	}
-  }
+  "files": [
+    "resources",
+    "routes",
+    "default_views",
+    "blog.js",
+    "db.js",
+    "README.md",
+    "package.json"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dan-silver/Node.js-Blog-Engine"
+  },
+  "dependencies": {
+    "express": "3.x",
+    "jade": "*",
+    "moment": "1.7.x",
+    "mysql": "2.x",
+    "passport": "*",
+    "passport-google": "*",
+    "sequelize": "1.x",
+    "stylus": "*"
+  },
+  "readme": "#Node.js Blog Engine\r\nThe goal of this project is to create a simple, reusable blog template for Node.js.  By passing in a few options, you can quickly have a fully functioning blog, including WYSIWYG editing, database saving, Disqus comments, draft saving options, and a responsive Twitter Bootstrap theme.\r\n\r\n[<img width=\"800px\" src=\"http://content.screencast.com/users/dan-silver78/folders/Jing/media/e7768b90-d5fd-49fb-9cd6-1dfb103ecc40/2013-01-25_1535.png\">](http://nodejs-blog-engine-example.herokuapp.com/)\r\n\r\n##Live Example\r\nYou can go to http://nodejs-blog-engine-example.herokuapp.com/ to view the example site.  To login as the admin, go to http://nodejs-blog-engine-example.herokuapp.com/login. For the example website, any Google account will have admin access.\r\n\r\n##Installation\r\nWarning! This is still being developed!!!  But, if you want to help out in development, you can install it with:\r\n```\r\nnpm install bootstrap-blog\r\n```\r\n\r\n##Simple Usage\r\nThe following code should be placed in your main serverside javascript file that is executed with node. For example, if this is placed in app.js, then ```node app.js``` would run the blog.\r\n```javascript\r\nvar blog = require('blog');\r\n\r\nblog.start({\r\n\ttitle: \"My awesome blog\",\r\n\tadminGoogleEmail: 'myGoogleEmail@gmail.com',\r\n\tliveDomain: 'http://some-app.herokuapp.com',\r\n\tdatabase: {\r\n\t\tdatabase: config.database,\r\n\t\tuser: config.user,\r\n\t\tpassword: config.password,\r\n\t\thost: config.host,\r\n\t\tdbPort: config.dbPort\r\n\t}\r\n});\r\n```\r\n##Options\r\n###Menu Items\r\nCustom menu items can be set by passing in an array of menu objects.\r\n```javascript\r\n\tmenu: [\r\n\t\t{\r\n\t\t\ttitle: 'Google',\r\n\t\t\tpath: 'http://www.google.com'\r\n\t\t}, {\r\n\t\t\ttitle: 'Amazon',\r\n\t\t\tpath: 'http://www.amazon.com'\r\n\t\t}\r\n\t]\r\n```\r\n###Custom Pages\r\nIf you want to create a custom page (not a blog posting), use the pages property.\r\n```javascript\r\npages:[\r\n\t\t{\r\n\t\t\tpath: '/about',\r\n\t\t\tcallback: function (req,res) {\r\n\t\t\t\tconsole.log('User has visitied the about page.');\r\n\t\t\t\tres.send('About page coming soon!');\r\n\t\t\t}\r\n\t\t},\r\n\t\t{\r\n\t\t\tpath: '/about/history',\r\n\t\t\tcallback: function (req,res) {\r\n\t\t\t\tconsole.log('User has visitied the history page.');\r\n\t\t\t\tres.send('History page coming soon!');\r\n\t\t\t}\t\r\n\t\t}\r\n\t]\r\n```\r\n###Different Bootstrap Themes\r\nYou can load in any Twitter Bootstrap theme by specifying the path to the css file.\r\n```javascript\r\nbootstrapPath: '/css/bootstrap.min.css'\r\n```\r\n###Modifying templates\r\n  When you run the blog for the first time, a views folder is created in your top directory.  Edit these files to change the layout of the website.  Since these are outside the node_modules folder, they will not be overridden during updates.\r\n###Example\r\n```javascript\r\nvar blog = require('blog');\r\n\r\nblog.start({\r\n\ttitle: \"My awesome blog\",\r\n\tadminGoogleEmail: 'myGoogleEmail@gmail.com',\r\n\tlocalPort: 5000, //defaults to 3000\r\n\tliveDomain: 'http://some-app.herokuapp.com',\r\n\tdatabase: {\r\n\t\tdatabase: config.database,\r\n\t\tuser: config.user,\r\n\t\tpassword: config.password,\r\n\t\thost: config.host,\r\n\t\tdbPort: config.dbPort\r\n\t},\r\n\tbootstrapPath: '/css/bootstrap.min.css',\r\n\tpages:[\r\n\t\t{\r\n\t\t\tpath: '/about',\r\n\t\t\tcallback: function (req,res) {\r\n\t\t\t\tconsole.log('User has visitied the about page.');\r\n\t\t\t\tres.send('About page coming soon!');\r\n\t\t\t}\r\n\t\t},\r\n\t\t{\r\n\t\t\tpath: '/about/history',\r\n\t\t\tcallback: function (req,res) {\r\n\t\t\t\tconsole.log('User has visitied the history page.');\r\n\t\t\t\tres.send('History page coming soon!');\r\n\t\t\t}\t\r\n\t\t}\r\n\t],\r\n\tmenu: [\r\n\t\t{\r\n\t\t\ttitle: 'Google',\r\n\t\t\tpath: 'http://www.google.com'\r\n\t\t}, {\r\n\t\t\ttitle: 'Amazon',\r\n\t\t\tpath: 'http://www.amazon.com'\r\n\t\t}\r\n\t]\r\n});\r\n```\r\n",
+  "readmeFilename": "README.md",
+  "_id": "bootstrap-blog@0.1.5",
+  "_from": "bootstrap-blog@*"
+}

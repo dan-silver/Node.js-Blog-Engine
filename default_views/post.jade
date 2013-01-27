@@ -10,3 +10,11 @@ block content
    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
    })();
+
+block append head
+ script(src='/datepicker/js/bootstrap-datepicker.js')
+ link(href='/datepicker/css/datepicker.css', rel="stylesheet")
+ script
+  $(function() {
+   $('.date').datepicker().on('changeDate', function(ev){$('.date').datepicker('hide')});;
+  }); 

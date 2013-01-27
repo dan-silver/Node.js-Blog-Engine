@@ -6,7 +6,8 @@
    else 
     span.label.label-success Published
    a(href='/post/' + post.title + '/edit'): span.label Edit
-   a(href='/post/' + post.title + '/confirm-deletion'): span.label.label-important Delete
+   a.deletebtn(href="#deleteModal",role="button",data-toggle="modal",postTitle=post.title)
+    span.label.label-important Delete
  if noTitleLink
   h2= post.title
  else
@@ -15,3 +16,20 @@
  .inner-post!= post.content
  if !noTitleLink
   .read-more-btn: a.btn.btn-small(href='/post/'+post.title) Full Blog Entry »
+#deleteModal.modal.hide.fade(tabindex="-1",role="dialog",aria-labelledby="myModalLabel",aria-hidden="true")
+ .modal-header
+  button.close(type="button,data-dismiss="modal",aria-hidden="true") ×
+  h3#myModalLabel Blog Entry Deletion
+ .modal-body
+  p
+ .modal-footer
+  button.btn(data-dismiss="modal",aria-hidden="true") Cancel
+  a.btn.btn-danger  Delete
+block append head
+ script
+  $(function() {
+   $('.deletebtn').click(function() {
+    $('#deleteModal p').html('Are you sure you want to delete the post "' + $(this).attr("postTitle") + '"?');
+    $('#deleteModal .btn-danger').attr('href', '/post/' + $(this).attr("postTitle") + '/delete');
+   });  
+  });
