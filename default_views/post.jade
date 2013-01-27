@@ -10,11 +10,6 @@ block content
    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
    })();
-block append head
- script
-  $(function() {
-   $('.deletebtn').click(function() {
-    $('#deleteModal p').html('Are you sure you want to delete the post "' + $(this).attr("postTitle") + '"?');
-    $('#deleteModal .btn-danger').attr('href', '/post/' + $(this).attr("postTitle") + '/delete');
-   });  
-  });
+
+block append postContent
+ include deletionModal

@@ -16,12 +16,3 @@
  .inner-post!= post.content
  if !noTitleLink
   .read-more-btn: a.btn.btn-small(href='/post/'+post.title) Full Blog Entry »
-#deleteModal.modal.hide.fade(tabindex="-1",role="dialog",aria-labelledby="myModalLabel",aria-hidden="true")
- .modal-header
-  button.close(type="button,data-dismiss="modal",aria-hidden="true") ×
-  h3#myModalLabel Blog Entry Deletion
- .modal-body
-  p
- .modal-footer
-  button.btn(data-dismiss="modal",aria-hidden="true") Cancel
-  a.btn.btn-danger  Delete
