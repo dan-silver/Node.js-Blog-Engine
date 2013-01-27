@@ -7,9 +7,22 @@ block content
   - var action = 'createPost';
  form(method="get", action='/' + action)
   input(type="hidden",name="postId",value=post.id)
-  input(style="width:100%;",name="title",type="text",placeholder="Blog Entry Title",value=post.title,required)
+  input.span12(name="title",type="text",placeholder="Blog Entry Title",value=post.title,required)
+  .row-fluid
+   .input-append.date.span2(data-date=post.createdAt)
+    input.span6(size="16",type="text",value=post.createdAt, name="createdAt", style="width:100%;")
+    span.add-on
+     i.icon-th
   textarea.xxlarge.ckeditor(name="content")!=post.content
   #edit-form-actions.pull-right
    a.btn.btn-danger(href="/") Cancel
    button.btn.btn-inverse(name="status",value="draft",type="submit") Save as Draft
    button.btn.btn-success(name="status",value="published",type="submit") Publish
+
+block append head
+ script(src='/datepicker/js/bootstrap-datepicker.js')
+ link(href='/datepicker/css/datepicker.css', rel="stylesheet")
+ script
+  $(function() {
+   $('.date').datepicker().on('changeDate', function(ev){$('.date').datepicker('hide')});;
+  }); 

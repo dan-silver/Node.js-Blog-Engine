@@ -4,7 +4,7 @@ var db = require('../db')
 function formatPostPreviews(posts) {
 	posts.forEach(function(post) {
 		post.content = post.content.substr(0,post.content.search("</p>"));
-		post.createdAt = moment(post.createdAt).format("MMMM Do YYYY");
+		post.createdAt = moment(post.createdAt).format("MMMM Do, YYYY");
 	});				
 	return posts;
 }
@@ -23,7 +23,7 @@ exports.set = function(options) {
 		if (!req.user) searchParameters.status = 'published'; //guests cannot see blog entry drafts
 		db.posts.find({where: searchParameters}).success(function(post) {
 			if (post) {
-				post.createdAt = moment(post.createdAt).format("MMMM Do YYYY");
+				post.createdAt = moment(post.createdAt).format("MMMM Do, YYYY");
 				res.render('post', {post: post, noTitleLink: true});
 			} else {
 				res.send(404, 'Sorry, I can\'t find that entry!');
@@ -34,7 +34,8 @@ exports.set = function(options) {
 	exports.newPost = function(req, res) {
 		res.render('editPost', {post:{
 			content: '',
-			title: ''
+			title: '',
+			createdAt: moment().format("MM/DD/YYYY")
 		}});
 	};
 
@@ -42,6 +43,7 @@ exports.set = function(options) {
 		db.posts.find({where: {title:req.params.title}}).success(function(post) {
 			switch(req.params.mode) {
 				case "edit":
+					post.createdAt = moment(post.createdAt).format("MM/DD/YYYY");
 					res.render('editPost', {post: post});
 				break;
 				case "confirm-deletion":

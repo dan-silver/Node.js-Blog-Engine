@@ -4,6 +4,7 @@ var express = require('express')
   , passport = require('passport')
   , fs = require('fs')
   , util = require('util')
+  , moment = require('moment')
   , GoogleStrategy = require('passport-google').Strategy;
 fs.mkdir('views',function(e){
     if(!e || (e.code === 'EEXIST')){
@@ -107,6 +108,7 @@ exports.start = function(options) {
 		db.posts.find( {where: {id:req.query.postId}}).success(function(post) {
 			post.title = req.query.title;
 			post.content = req.query.content;
+			post.createdAt = new Date(moment(req.query.createdAt, "MM/DD/YYYY").utc());
 			post.status = req.query.status;
 			post.save();
 			res.redirect('/');
