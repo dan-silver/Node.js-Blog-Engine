@@ -115,3 +115,5 @@ blog.start({
 	]
 });
 ```
+var blog = require('bootstrap-blog');
+var blog = require('bootstrap-blog');
