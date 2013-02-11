@@ -15,7 +15,7 @@ npm install bootstrap-blog
 ##Simple Usage
 The following code should be placed in your main serverside javascript file that is executed with node. For example, if this is placed in app.js, then ```node app.js``` would run the blog.
 ```javascript
-var blog = require('blog');
+var blog = require('bootstrap-blog');
 
 blog.start({
 	title: "My awesome blog",
@@ -73,7 +73,7 @@ bootstrapPath: '/css/bootstrap.min.css'
   When you run the blog for the first time, a views folder is created in your top directory.  Edit these files to change the layout of the website.  Since these are outside the node_modules folder, they will not be overridden during updates.
 ###Example
 ```javascript
-var blog = require('blog');
+var blog = require('bootstrap-blog');
 
 blog.start({
 	title: "My awesome blog",
@@ -115,5 +115,3 @@ blog.start({
 	]
 });
 ```
-var blog = require('bootstrap-blog');
-var blog = require('bootstrap-blog');
