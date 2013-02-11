@@ -233,5 +233,3 @@ blog.start({
 		}
 	]
 });
-```
->>>>>>> Fixed path issue on install, changed readme to reflect proper module name
