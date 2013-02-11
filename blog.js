@@ -7,19 +7,20 @@ var express = require('express')
   , moment = require('moment')
   , GoogleStrategy = require('passport-google').Strategy;
 fs.mkdir('views',function(e){
-    if(!e || (e.code === 'EEXIST')){
-        fs.readdir('node_modules/bootstrap-blog/default_views/', function(err,files) {
-			files.forEach(function(file) {
-				fs.exists('views/'+file, function (exists) {
-					if (!exists) {
-						fs.createReadStream('node_modules/bootstrap-blog/default_views/'+file).pipe(fs.createWriteStream('views/'+file));
-					}
-				});
-			});
-		});
-    } else {
-        console.log(e);
-    }
+  if(!e || (e.code === 'EEXIST')){
+    /* install failed if not using __dirname */
+    fs.readdir(__dirname+'/default_views/', function(err,files) {
+      files.forEach(function(file) {
+        fs.exists('views/'+file, function (exists) {
+          if (!exists) {
+            fs.createReadStream(__dirname+'/default_views/'+file).pipe(fs.createWriteStream('views/'+file));
+          }
+        });
+      });
+    });
+  } else {
+    console.log(e);
+  }
 });
 
 var app = express();
@@ -52,7 +53,9 @@ exports.start = function(options) {
 
 	app.configure(function(){
 	  app.set('port', process.env.PORT || options.localPort || 3000);
-	  app.set('views', __dirname+'/../../views');
+	  //app.set('views', __dirname+'/../../views');
+    //fixing path issues
+    app.set('views','./views');
 	  app.set('view engine', 'jade');
 	  app.use(express.favicon());
 //	  app.use(express.logger('dev'));
