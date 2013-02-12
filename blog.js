@@ -8,7 +8,6 @@ var express = require('express')
   , GoogleStrategy = require('passport-google').Strategy;
 fs.mkdir('views',function(e){
   if(!e || (e.code === 'EEXIST')){
-    /* install failed if not using __dirname */
     fs.readdir(__dirname+'/default_views/', function(err,files) {
       files.forEach(function(file) {
         fs.exists('views/'+file, function (exists) {
@@ -53,8 +52,6 @@ exports.start = function(options) {
 
 	app.configure(function(){
 	  app.set('port', process.env.PORT || options.localPort || 3000);
-	  //app.set('views', __dirname+'/../../views');
-    //fixing path issues
     app.set('views','./views');
 	  app.set('view engine', 'jade');
 	  app.use(express.favicon());

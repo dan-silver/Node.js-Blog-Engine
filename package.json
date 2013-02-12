@@ -1,7 +1,7 @@
 {
   "name": "bootstrap-blog",
   "description": "Express and Twitter Bootstrap powered blogging",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "main": "./blog.js",
   "keywords": [
     "blog"
