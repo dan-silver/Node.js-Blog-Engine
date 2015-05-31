@@ -1,3 +1,5 @@
+#WARNING - This repo is deprecated!
+
 #Node.js Blog Engine
 The goal of this project is to create a simple, reusable blog template for Node.js.  By passing in a few options, you can quickly have a fully functioning blog, including WYSIWYG editing, database saving, Disqus comments, draft saving options, and a responsive Twitter Bootstrap theme.
 
